@@ -463,7 +463,7 @@ PrefabInstance:
     - target: {fileID: 95028430175513588, guid: 0814aba0a5f87494cb000251ab82361f, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 900339c12109141ee901979750b38288, type: 2}
+      objectReference: {fileID: 9100000, guid: 993a22d5c5c33484eb5222a346044401, type: 2}
     - target: {fileID: 95028430175513588, guid: 0814aba0a5f87494cb000251ab82361f, type: 3}
       propertyPath: m_UpdateMode
       value: 1

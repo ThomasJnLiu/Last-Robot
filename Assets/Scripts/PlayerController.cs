@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
 
     private bool groundedPlayer;
-    private float playerSpeed = 5.0f;
-    private float jumpSpeed = 1.0f;
-
+    private float playerSpeed = 10.0f;
+    private float jumpSpeed = 10.0f;
+    private float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
+    
     private Animator animator;
 
     // Start is called before the first frame update
@@ -26,7 +28,11 @@ public class PlayerController : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
 
         Vector3 move = Vector3.Normalize(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
-        playerVelocity = Vector3.Normalize(new Vector3(Input.GetAxis("Horizontal") * playerSpeed, rb.velocity.y, Input.GetAxis("Vertical") * playerSpeed));;
+        // I have no idea why, but removing the first 2 "* playerSpeed" makes the movement while jumping stuttery, so don't touch that
+        playerVelocity = Vector3.Normalize(new Vector3(Input.GetAxis("Horizontal") * playerSpeed, rb.velocity.y, Input.GetAxis("Vertical") * playerSpeed))*playerSpeed;
+
+        // Calculates the angle the player should be facing
+        float targetAngle = Mathf.Atan2(playerVelocity.x, playerVelocity.z) * Mathf.Rad2Deg;
 
         // Y Velocity
         if (groundedPlayer && playerVelocity.y < 0)
@@ -39,9 +45,13 @@ public class PlayerController : MonoBehaviour
         }
 
         // Move
-        if (move != Vector3.zero)
+        if (playerVelocity.x != 0f || playerVelocity.z != 0f)
         {
-            gameObject.transform.forward = move;
+            // Turns the player in the direction they're moving in
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            // gameObject.transform.forward = move;
             animator.SetBool("isRunning", true);
         } else {
             animator.SetBool("isRunning", false);
