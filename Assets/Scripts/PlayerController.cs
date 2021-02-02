@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         animator = gameObject.GetComponent<Animator>();
-        cam = gameObject.GetComponent<Transform>();
     }
 
     // Update is called once per frame
