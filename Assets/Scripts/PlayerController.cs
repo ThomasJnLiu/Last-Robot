@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private Vector3 playerVelocity;
+    public Transform cam;
 
     public Transform cam;
     public GameObject box;
@@ -26,8 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         animator = gameObject.GetComponent<Animator>();
-
-        // box.transform.SetParent(this.transform, true);
+        cam = gameObject.GetComponent<Transform>();
     }
 
     // Update is called once per frame
