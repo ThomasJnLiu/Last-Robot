@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform cam;
 
     private bool groundedPlayer;
+    public bool canTurn;
     private float playerSpeed = 10.0f;
     private float jumpSpeed = 10.0f;
     private float turnSmoothTime = 0.1f;
@@ -33,13 +34,21 @@ public class PlayerController : MonoBehaviour
         // I have no idea why, but removing the first 2 "* playerSpeed" makes the movement while jumping stuttery, so don't touch that
         playerVelocity = Vector3.Normalize(new Vector3(Input.GetAxis("Horizontal") * playerSpeed, rb.velocity.y, Input.GetAxis("Vertical") * playerSpeed))*playerSpeed;
 
-        // Calculates the angle the player should be facing, taking into consideration the position of the camera
-        float targetAngle = Mathf.Atan2(playerVelocity.x, playerVelocity.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
+        // Calculates the angle the player should be facing
+        float targetAngle = Mathf.Atan2(playerVelocity.x, playerVelocity.z) * Mathf.Rad2Deg;        
         // Calculates the direction the player should be moving in, using the angle the player is facing
-        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * transform.forward;
+        
+        if(canTurn){
+            // Calculates the angle the player should be facing, taking into consideration the position of the camera
+            targetAngle = Mathf.Atan2(playerVelocity.x, playerVelocity.z) * Mathf.Rad2Deg + cam.eulerAngles.y;        
+            // Calculates the direction the player should be moving in, using the angle the player is facing
+            moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        }
 
-        // I uncommented this code, if it breaks anything, put it back 
+
+        // I commented this code, if it breaks anything, put it back 
 
         // Y Velocity
         // if (groundedPlayer && playerVelocity.y < 0)
@@ -52,9 +61,12 @@ public class PlayerController : MonoBehaviour
         // Move
         if (playerVelocity.x != 0f || playerVelocity.z != 0f)
         {
-            // Turns the player in the direction they're moving in
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            if(canTurn){
+                // Turns the player in the direction they're moving in
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            }
+
 
             // gameObject.transform.forward = move;
             animator.SetBool("isRunning", true);

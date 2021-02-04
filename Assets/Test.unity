@@ -873,6 +873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 2027890560}
+  canTurn: 1
 --- !u!54 &1203054930
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1247,7 +1248,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702718185}
-  m_LocalRotation: {x: 0.041512035, y: 0.000000017191548, z: -7.142718e-10, w: 0.99913806}
+  m_LocalRotation: {x: 0.041512035, y: -0.000000017191551, z: 7.14272e-10, w: 0.99913806}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1413,7 +1414,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027890557}
-  m_LocalRotation: {x: 0.04151204, y: 0.0000000343831, z: -0.000000001428544, w: 0.99913806}
+  m_LocalRotation: {x: 0.04151204, y: -0.000000034383103, z: 0.0000000014285438, w: 0.99913806}
   m_LocalPosition: {x: 0, y: 6.8, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
