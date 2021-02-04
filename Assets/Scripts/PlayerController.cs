@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 playerVelocity;
 
+    public Transform cam;
+
     private bool groundedPlayer;
     private float playerSpeed = 10.0f;
     private float jumpSpeed = 10.0f;
@@ -31,18 +33,21 @@ public class PlayerController : MonoBehaviour
         // I have no idea why, but removing the first 2 "* playerSpeed" makes the movement while jumping stuttery, so don't touch that
         playerVelocity = Vector3.Normalize(new Vector3(Input.GetAxis("Horizontal") * playerSpeed, rb.velocity.y, Input.GetAxis("Vertical") * playerSpeed))*playerSpeed;
 
-        // Calculates the angle the player should be facing
-        float targetAngle = Mathf.Atan2(playerVelocity.x, playerVelocity.z) * Mathf.Rad2Deg;
+        // Calculates the angle the player should be facing, taking into consideration the position of the camera
+        float targetAngle = Mathf.Atan2(playerVelocity.x, playerVelocity.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+
+        // Calculates the direction the player should be moving in, using the angle the player is facing
+        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+
+        // I uncommented this code, if it breaks anything, put it back 
 
         // Y Velocity
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-            Debug.Log("what");
-        } else {
-            playerVelocity.y = rb.velocity.y;
-            Debug.Log("fuck " + rb.velocity);
-        }
+        // if (groundedPlayer && playerVelocity.y < 0)
+        // {
+        //     playerVelocity.y = 0f;
+        // } else {
+        //     playerVelocity.y = rb.velocity.y;
+        // }
 
         // Move
         if (playerVelocity.x != 0f || playerVelocity.z != 0f)
@@ -57,13 +62,21 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isRunning", false);
         }
 
-        // Changes the height position of the player..
+        // Changes the height position of the player.
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
-            playerVelocity.y = playerSpeed;
+            // this is extremely messy, but it works and that's what matters :)
+            rb.velocity = new Vector3(rb.velocity.x, 10f, rb.velocity.z);
+            playerVelocity = rb.velocity;
+            Debug.Log(playerVelocity.y);
         }
 
-        rb.velocity = playerVelocity;
+        // // Stops the model immediately if there is no input from the player, prevents sliding
+        if (Input.GetAxis("Horizontal") != 0f ||Input.GetAxis("Vertical") != 0f){
+            rb.velocity = new Vector3(moveDir.x * playerSpeed, rb.velocity.y, moveDir.z * playerSpeed);
+        }else{
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
     }
 
     // Check if object is grounded
