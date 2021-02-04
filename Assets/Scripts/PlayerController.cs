@@ -8,7 +8,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
 
     public Transform cam;
+    public GameObject box;
+    public bool canGrab;
 
+    private bool grabbingItem = false;
     private bool groundedPlayer;
     public bool canTurn;
     private float playerSpeed = 10.0f;
@@ -23,17 +26,18 @@ public class PlayerController : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         animator = gameObject.GetComponent<Animator>();
+
+        // box.transform.SetParent(this.transform, true);
     }
 
     // Update is called once per frame
     void Update()
     {
         rb.angularVelocity = Vector3.zero;
-
         Vector3 move = Vector3.Normalize(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
         // I have no idea why, but removing the first 2 "* playerSpeed" makes the movement while jumping stuttery, so don't touch that
         playerVelocity = Vector3.Normalize(new Vector3(Input.GetAxis("Horizontal") * playerSpeed, rb.velocity.y, Input.GetAxis("Vertical") * playerSpeed))*playerSpeed;
-
+ 
 
         // Calculates the angle the player should be facing
         float targetAngle = Mathf.Atan2(playerVelocity.x, playerVelocity.z) * Mathf.Rad2Deg;        
@@ -66,8 +70,6 @@ public class PlayerController : MonoBehaviour
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
-
-
             // gameObject.transform.forward = move;
             animator.SetBool("isRunning", true);
         } else {
@@ -89,6 +91,25 @@ public class PlayerController : MonoBehaviour
         }else{
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
         }
+
+        // Grab button
+        if(Input.GetKeyDown ("c")){
+            if(canGrab && !grabbingItem){
+                // Setting a lot of variables here, we could conslidate this into a function so it's a little cleaner, esp since these same variables
+                // are also changed in the next else condition
+                grabbingItem = true;
+                canTurn = false;
+                playerSpeed = 5f;
+                box.transform.SetParent(this.transform, true);   
+            }else{
+                grabbingItem = false;
+                canTurn = true;
+                playerSpeed = 10f;
+                box.transform.SetParent(null, true);
+            }
+    
+        }
+
     }
 
     // Check if object is grounded
@@ -111,5 +132,9 @@ public class PlayerController : MonoBehaviour
         }
 
         groundedPlayer = false;
+    }
+
+    public void GetGrabTaget(GameObject otherGameobject){
+        box = otherGameobject;
     }
 }
