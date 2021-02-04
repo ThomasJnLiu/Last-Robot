@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool grabbingItem = false;
     private bool groundedPlayer;
     public bool canTurn;
-    private float playerSpeed = 10.0f;
+    private float playerSpeed = 20.0f;
     private float jumpSpeed = 10.0f;
     private float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
             }else{
                 grabbingItem = false;
                 canTurn = true;
-                playerSpeed = 10f;
+                playerSpeed = 20f;
                 box.transform.SetParent(null, true);
             }
     
