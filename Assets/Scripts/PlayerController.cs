@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
         // Move
         if (playerVelocity.x != 0f || playerVelocity.z != 0f)
         {
+            PlayerSoundController.PlayWalk(true);
             if(canTurn){
                 // Turns the player in the direction they're moving in
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour
             // gameObject.transform.forward = move;
             animator.SetBool("isRunning", true);
         } else {
+            PlayerSoundController.PlayWalk(false);
             animator.SetBool("isRunning", false);
         }
 
@@ -82,6 +84,7 @@ public class PlayerController : MonoBehaviour
             // this is extremely messy, but it works and that's what matters :)
             rb.velocity = new Vector3(rb.velocity.x, 10f, rb.velocity.z);
             playerVelocity = rb.velocity;
+            PlayerSoundController.PlayOneTime("jump");
             Debug.Log(playerVelocity.y);
         }
 
@@ -100,7 +103,8 @@ public class PlayerController : MonoBehaviour
                 grabbingItem = true;
                 canTurn = false;
                 playerSpeed = 5f;
-                box.transform.SetParent(this.transform, true);   
+                box.transform.SetParent(this.transform, true);
+                PlayerSoundController.PlayOneTime("grab");
             }else{
                 grabbingItem = false;
                 canTurn = true;
