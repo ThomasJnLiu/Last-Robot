@@ -10,6 +10,9 @@ public class RedPlatform : MonoBehaviour
     private static float liftLimit = 15;
     private static float dropLimit = 3;
     private static int delay;
+    private static float platformTimer = 0.0f;
+    private static float platformDelay = 5.0f;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -26,7 +29,11 @@ public class RedPlatform : MonoBehaviour
         {
             if (lifted)
             {
-                dropPlatform();
+                platformTimer += Time.deltaTime;
+                if (platformTimer > platformDelay)
+                {
+                    dropPlatform();                    
+                }
             }
             else
             {
@@ -47,6 +54,7 @@ public class RedPlatform : MonoBehaviour
             // Platform is dropped
             lifted = false;
             active = false;
+            platformTimer = 0.0f;
         }
     }
 
@@ -60,7 +68,6 @@ public class RedPlatform : MonoBehaviour
         {
             // Platform is lifted
             lifted = true;
-            active = false;
         }
     }
 }
