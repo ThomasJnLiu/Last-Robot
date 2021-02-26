@@ -11,7 +11,7 @@ public class RedPlatform : MonoBehaviour
     private static float dropLimit = 3;
     private static int delay;
     private static float platformTimer = 0.0f;
-    private static float platformDelay = 5.0f;
+    private static float platformDelay = 3.0f;
     
     
     // Start is called before the first frame update
@@ -19,7 +19,8 @@ public class RedPlatform : MonoBehaviour
     {
         lifted = false;
         active = false;
-        platform = GameObject.Find("Red Platform");
+        platform = GameObject.Find("LiftPlatform");
+        dropLimit = platform.transform.position.y;
     }
 
     // Update is called once per frame

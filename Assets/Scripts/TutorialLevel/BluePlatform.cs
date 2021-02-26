@@ -7,7 +7,7 @@ public class BluePlatform : MonoBehaviour
     public bool open, active;
     private static float speed = 15;
     private GameObject platform;
-    private static float openLimit = -43;
+    private static float openLimit;
     private static float closedLimit = -73;
 
     // Start is called before the first frame update
@@ -15,8 +15,8 @@ public class BluePlatform : MonoBehaviour
     {
         open = true;
         active = false;
-        platform = GameObject.Find("Blue Platform");
-        
+        platform = GameObject.Find("RetractableBridge");
+        openLimit = platform.transform.position.z;
     }
 
     // Update is called once per frame

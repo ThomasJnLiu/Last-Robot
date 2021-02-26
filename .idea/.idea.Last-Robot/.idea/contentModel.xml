@@ -6,13 +6,15 @@
     <e p="C:\Users\sabin\Documents\Unity\CS404\Last-Robot" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="BluePlatform.cs" t="Include" />
-        <e p="RedButton.cs" t="Include" />
-        <e p="RedPlatform.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="GrabDetection.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerSoundController.cs" t="Include" />
+          <e p="TutorialLevel" t="Include">
+            <e p="BluePlatform.cs" t="Include" />
+            <e p="RedButton.cs" t="Include" />
+            <e p="RedPlatform.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="Last-Robot.sln" t="IncludeFlat" />

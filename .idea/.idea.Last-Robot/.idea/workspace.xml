@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10b4bb32-e975-4946-a20d-f82b48dde24e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Last-Robot/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Last-Robot/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Last-Robot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Last-Robot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RedPlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RedPlatform.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BluePlatform.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BluePlatform.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RedButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RedButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RedPlatform.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RedPlatform.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +22,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../ThirdPersonView/Assets/ThirdPersonMovement.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TutorialLevel/BluePlatform.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -23,6 +31,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/PlayerSoundController.cs" />
       <option value="$PROJECT_DIR$/Assets/BluePlatform.cs" />
       <option value="$PROJECT_DIR$/Assets/RedPlatform.cs" />
+      <option value="$PROJECT_DIR$/Assets/RedButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/TutorialLevel/RedButton.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1ntKXjpnHsMxgAxMpyfE3G2vpXU" />
@@ -70,7 +80,7 @@
       <workItem from="1612496775665" duration="621000" />
       <workItem from="1612513032957" duration="3477000" />
       <workItem from="1614201008292" duration="1898000" />
-      <workItem from="1614273385613" duration="6045000" />
+      <workItem from="1614273385613" duration="7867000" />
     </task>
     <servers />
   </component>
@@ -79,6 +89,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
