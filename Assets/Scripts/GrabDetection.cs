@@ -22,12 +22,21 @@ public class GrabDetection : MonoBehaviour
             player.GetGrabTaget(other.gameObject);
             player.canGrab = true;
         }
+
+        if (other.gameObject.tag == "BrokenArm") {
+            player.GetFixTarget(other.gameObject);
+            player.canFix = true;
+        }
     }
 
     void OnTriggerExit(Collider other){
         if(other.gameObject.tag == "Box"){
             Debug.Log("Grab range out");
             player.canGrab = false;
+        }
+
+        if (other.gameObject.tag == "BrokenArm") {
+            player.canFix = false;
         }
     }
 }

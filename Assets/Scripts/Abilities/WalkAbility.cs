@@ -33,7 +33,7 @@ public class WalkAbility : MonoBehaviour
             if(player.canTurn){
                 // Turns the player in the direction they're moving in
                 float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref player.turnSmoothVelocity, player.turnSmoothTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                player.transform.rotation = Quaternion.Euler(0f, angle, 0f);
             }
             // gameObject.transform.forward = move;
             player.animator.SetBool("isRunning", true);

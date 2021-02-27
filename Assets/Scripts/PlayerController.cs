@@ -8,8 +8,12 @@ public class PlayerController : MonoBehaviour
     public Vector3 playerVelocity;
 
     public Transform cam;
+
     public GameObject box;
+    public GameObject brokenArm;
+
     public bool canGrab;
+    public bool canFix;
 
     public bool grabbingItem = false;
     public bool groundedPlayer;
@@ -68,5 +72,9 @@ public class PlayerController : MonoBehaviour
 
     public void GetGrabTaget(GameObject otherGameobject){
         box = otherGameobject;
+    }
+
+    public void GetFixTarget(GameObject otherGameobject) {
+        brokenArm = otherGameobject;
     }
 }
