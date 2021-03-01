@@ -25,17 +25,15 @@ public class WalkAbility : MonoBehaviour
             // Calculates the direction the player should be moving in, using the angle the player is facing
             moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
         }
-        
+
         // Move
         if (player.playerVelocity.x != 0f || player.playerVelocity.z != 0f)
         {
             PlayerSoundController.PlayWalk(true);
-            if(player.canTurn){
-                // Turns the player in the direction they're moving in
-                
-                float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref player.turnSmoothVelocity, player.turnSmoothTime);
-                player.transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            }
+            // Turns the player in the direction they're moving in
+            float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref player.turnSmoothVelocity, player.turnSmoothTime);
+            player.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
             // gameObject.transform.forward = move;
             player.animator.SetBool("isRunning", true);
         } else {
