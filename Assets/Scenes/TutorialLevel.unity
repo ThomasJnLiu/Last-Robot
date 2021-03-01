@@ -323,7 +323,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66935005}
-  m_LocalRotation: {x: 0.04151204, y: 0.000000034383103, z: -0.0000000014285438, w: 0.99913806}
+  m_LocalRotation: {x: 0.04151204, y: -0.0000000343831, z: 0.000000001428544, w: 0.99913806}
   m_LocalPosition: {x: 0, y: 8.74, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -938,12 +938,12 @@ MonoBehaviour:
 
     1: Disassemble Arm
 
-    C: Lift
+    C: Lift Box
 
-    E: Fix Broken Arm (Disabled)
+    E: Fix Broken Lever
+    with Arm (Disabled)
 
-    F:
-    Retrieve Arm (Disabled)'
+    F: Retrieve Arm (Disabled)'
 --- !u!222 &414763854
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2803,7 +2803,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137169169}
-  m_LocalRotation: {x: 0.041512035, y: 0.000000017191551, z: -7.14272e-10, w: 0.99913806}
+  m_LocalRotation: {x: 0.041512035, y: -0.000000017191548, z: 7.142718e-10, w: 0.99913806}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
