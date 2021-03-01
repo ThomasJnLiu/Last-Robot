@@ -7,7 +7,14 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Abilities" t="Include">
+            <e p="JumpAbility.cs" t="Include" />
+            <e p="LiftAbility.cs" t="Include" />
+            <e p="WalkAbility.cs" t="Include" />
+          </e>
+          <e p="AbilityManager.cs" t="Include" />
           <e p="GrabDetection.cs" t="Include" />
+          <e p="HeadController.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayerSoundController.cs" t="Include" />
           <e p="TutorialLevel" t="Include">
