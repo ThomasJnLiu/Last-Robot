@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         animator = gameObject.GetComponent<Animator>();
 
+        canGrab = false;
+        canFix = false;
+
         // box.transform.SetParent(this.transform, true);
     }
 
