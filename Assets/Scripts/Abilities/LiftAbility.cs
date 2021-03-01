@@ -16,7 +16,7 @@ public class LiftAbility : MonoBehaviour
                 // are also changed in the next else condition
                 player.grabbingItem = true;
                 player.canTurn = false;
-                player.playerSpeed = 5f;
+                // player.playerSpeed = 5f;
                 player.box.transform.SetParent(player.transform, true);
                 player.box.GetComponent<Rigidbody>().isKinematic = true;
                 PlayerSoundController.PlayOneTime("grab");
