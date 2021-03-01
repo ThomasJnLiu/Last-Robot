@@ -39,7 +39,7 @@ public class AbilityManager : MonoBehaviour
                 String prompt = controls.text;
                 prompt = prompt.Replace("Assemble", "Disassemble");
                 prompt = prompt.Replace("C: Lift (Disabled)", "C: Lift");
-                prompt = prompt.Replace("E: Fix Broken Arm", "E: Fix Broken Arm (Disabled)");
+                prompt = prompt.Replace("E: Fix Broken Lever with Arm", "E: Fix Broken Lever with Arm (Disabled)");
                 controls.text = prompt;
                 prompt = extras.text;
                 prompt = prompt.Replace("Arm", "None");
