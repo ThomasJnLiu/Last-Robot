@@ -15,7 +15,7 @@ public class LiftAbility : MonoBehaviour
                 // Setting a lot of variables here, we could conslidate this into a function so it's a little cleaner, esp since these same variables
                 // are also changed in the next else condition
                 player.grabbingItem = true;
-                player.canTurn = false;
+                player.canTurn = true;
                 // player.playerSpeed = 5f;
                 player.box.transform.SetParent(player.transform, true);
                 player.box.GetComponent<Rigidbody>().isKinematic = true;

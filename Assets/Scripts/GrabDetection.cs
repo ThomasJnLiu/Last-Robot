@@ -18,7 +18,6 @@ public class GrabDetection : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if(other.gameObject.tag == "Box"){
-            Debug.Log("Grab range in");
             player.GetGrabTaget(other.gameObject);
             player.canGrab = true;
         }
@@ -31,7 +30,6 @@ public class GrabDetection : MonoBehaviour
 
     void OnTriggerExit(Collider other){
         if(other.gameObject.tag == "Box"){
-            Debug.Log("Grab range out");
             player.canGrab = false;
         }
 
