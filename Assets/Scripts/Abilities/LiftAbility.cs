@@ -28,10 +28,13 @@ public class LiftAbility : MonoBehaviour
                 player.grabbingItem = false;
                 player.canTurn = true;
                 player.playerSpeed = 20f;
-                player.box.transform.SetParent(null, true);
-                player.box.GetComponent<Rigidbody>().isKinematic = false;
+                if(player.box){
+                    player.box.transform.SetParent(null, true);
+                    player.box.GetComponent<Rigidbody>().isKinematic = false;
 
-                player.box.GetComponent<Collider>().isTrigger = false;
+                    player.box.GetComponent<Collider>().isTrigger = false;
+                }
+
 
             }
     
