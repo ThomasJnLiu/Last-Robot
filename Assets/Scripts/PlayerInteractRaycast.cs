@@ -18,22 +18,30 @@ public class PlayerInteractRaycast : MonoBehaviour
     {
             RaycastHit hit;
 
-            // In Physics.Raycast, the length of the ray is given as a parameter
-            // However in drawray, there is no length parameter, so the direction must be multiplied to determine the length of the ray
-            // In order to make the ray made by raycast and drawray the same length, the direction vector is normalized
-            // The direction vector in drawray is then multiplied by the length of the raycast
-            // answers.unity.com/questions/665891/how-to-calculate-debugdrawray-length-to-match-rayc.html
             Vector3 forward = transform.TransformDirection(Vector3.forward).normalized;
-            Debug.DrawRay(new Vector3(transform.position.x, transform.position.y-3f, transform.position.z), forward*5f, Color.red);
-  
-            if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y-3f, transform.position.z), forward, out hit, 5f, interactableLayer)){
-                Debug.Log("hit");   
-                Debug.Log(hit.transform.gameObject);
+
+            if(Physics.SphereCast(new Vector3(transform.position.x, transform.position.y-2, transform.position.z),3f, forward, out hit, 2f)){
                 player.GetGrabTaget(hit.transform.gameObject);
                 player.canGrab = true;
             }else{
                 player.canGrab = false;
             }
+    }
+
+    void OnDrawGizmos(){
+        float maxDistance = 5f;
+        RaycastHit hit;
+
+        Vector3 forward = transform.TransformDirection(Vector3.forward).normalized;
+
+        // Makes drawn gizmos rotate with player
+        Gizmos.matrix = this.transform.localToWorldMatrix;
+
+        // Representing the spherecast through gizmos was a big pain
+        Gizmos.color = new Color(1,0,0,0.5f);
+        Gizmos.DrawRay(new Vector3(0,-2,0), new Vector3(0,0,1f));
+        Gizmos.DrawWireSphere(new Vector3(0,-2,4), 3f);
+
     }
 
 }
