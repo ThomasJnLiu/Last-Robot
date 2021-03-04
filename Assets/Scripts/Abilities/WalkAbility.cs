@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class WalkAbility : MonoBehaviour
 {
     public PlayerController player;
+
 
     // Update is called once per frame
     void Update()
@@ -48,4 +50,6 @@ public class WalkAbility : MonoBehaviour
             player.rb.velocity = new Vector3(0, player.rb.velocity.y, 0);
         }
     }
+    
+    
 }

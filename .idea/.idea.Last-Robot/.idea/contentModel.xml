@@ -13,13 +13,16 @@
             <e p="WalkAbility.cs" t="Include" />
           </e>
           <e p="AbilityManager.cs" t="Include" />
+          <e p="Goal.cs" t="Include" />
           <e p="GrabDetection.cs" t="Include" />
           <e p="HeadController.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
+          <e p="PlayerInteractRaycast.cs" t="Include" />
           <e p="PlayerSoundController.cs" t="Include" />
           <e p="TutorialLevel" t="Include">
             <e p="BluePlatform.cs" t="Include" />
             <e p="RedButton.cs" t="Include" />
+            <e p="RedButtonDoor.cs" t="Include" />
             <e p="RedPlatform.cs" t="Include" />
           </e>
         </e>

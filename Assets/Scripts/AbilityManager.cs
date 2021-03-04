@@ -19,6 +19,7 @@ public class AbilityManager : MonoBehaviour
 
     public PlayerController player;
     public BluePlatform bluePlatform;
+    
 
     public TextMesh statusIndicator;
 
