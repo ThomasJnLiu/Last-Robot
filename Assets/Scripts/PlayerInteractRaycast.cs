@@ -21,7 +21,6 @@ public class PlayerInteractRaycast : MonoBehaviour
             Vector3 forward = transform.TransformDirection(Vector3.forward).normalized;
 
             if(Physics.SphereCast(new Vector3(transform.position.x, transform.position.y-3, transform.position.z),2f, forward, out hit, 3f, interactableLayer)){
-                Debug.Log("hitting");
                 player.GetGrabTaget(hit.transform.gameObject);
                 player.canGrab = true;
             }else{
