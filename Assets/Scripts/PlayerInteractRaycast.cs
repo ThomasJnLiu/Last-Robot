@@ -6,6 +6,7 @@ public class PlayerInteractRaycast : MonoBehaviour
 {
     public PlayerController player;
     public LayerMask interactableLayer;
+    public bool hittingInteractable = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,8 @@ public class PlayerInteractRaycast : MonoBehaviour
                 Debug.Log(hit.transform.gameObject);
                 player.GetGrabTaget(hit.transform.gameObject);
                 player.canGrab = true;
+            }else{
+                player.canGrab = false;
             }
         
     }
