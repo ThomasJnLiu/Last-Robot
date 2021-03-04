@@ -18,6 +18,8 @@ public class LiftAbility : MonoBehaviour
                 player.canTurn = true;
                 // player.playerSpeed = 5f;
                 player.box.transform.SetParent(player.transform, true);
+                player.box.transform.position = (player.transform.forward *5f) + player.transform.position;
+                player.box.transform.localRotation = Quaternion.Euler(0,0,0);
                 player.box.GetComponent<Rigidbody>().isKinematic = true;
 
                 // was having some buggy behaviour when the player's collider intersected with the box's collider

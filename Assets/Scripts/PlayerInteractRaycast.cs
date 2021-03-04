@@ -25,6 +25,7 @@ public class PlayerInteractRaycast : MonoBehaviour
             // answers.unity.com/questions/665891/how-to-calculate-debugdrawray-length-to-match-rayc.html
             Vector3 forward = transform.TransformDirection(Vector3.forward).normalized;
             Debug.DrawRay(new Vector3(transform.position.x, transform.position.y-3f, transform.position.z), forward*5f, Color.red);
+  
             if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y-3f, transform.position.z), forward, out hit, 5f, interactableLayer)){
                 Debug.Log("hit");   
                 Debug.Log(hit.transform.gameObject);
@@ -33,6 +34,6 @@ public class PlayerInteractRaycast : MonoBehaviour
             }else{
                 player.canGrab = false;
             }
-        
     }
+
 }
