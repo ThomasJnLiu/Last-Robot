@@ -20,7 +20,8 @@ public class PlayerInteractRaycast : MonoBehaviour
 
             Vector3 forward = transform.TransformDirection(Vector3.forward).normalized;
 
-            if(Physics.SphereCast(new Vector3(transform.position.x, transform.position.y-2, transform.position.z),3f, forward, out hit, 2f)){
+            if(Physics.SphereCast(new Vector3(transform.position.x, transform.position.y-3, transform.position.z),2f, forward, out hit, 3f, interactableLayer)){
+                Debug.Log("hitting");
                 player.GetGrabTaget(hit.transform.gameObject);
                 player.canGrab = true;
             }else{
@@ -37,7 +38,7 @@ public class PlayerInteractRaycast : MonoBehaviour
         // Makes drawn gizmos rotate with player
         Gizmos.matrix = this.transform.localToWorldMatrix;
 
-        // Representing the spherecast through gizmos was a big pain
+        // Representing the spherecast through gizmos was a big
         Gizmos.color = new Color(1,0,0,0.5f);
         Gizmos.DrawRay(new Vector3(0,-2,0), new Vector3(0,0,1f));
         Gizmos.DrawWireSphere(new Vector3(0,-2,4), 3f);
