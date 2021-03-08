@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JSAM;
 
 public class LiftAbility : MonoBehaviour
 {
@@ -25,7 +26,8 @@ public class LiftAbility : MonoBehaviour
                 // was having some buggy behaviour when the player's collider intersected with the box's collider
                 // by setting the box collider to a trigger, it makes it so other colliders don't interact with it in physics
                 player.box.GetComponent<Collider>().isTrigger = true;
-                PlayerSoundController.PlayOneTime("grab");
+                // PlayerSoundController.PlayOneTime("grab");
+                JSAM.AudioManager.PlaySound(Sounds.grabsfx);
             } else {
                 player.grabbingItem = false;
                 player.canTurn = true;
