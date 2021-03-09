@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public bool canGrab;
     public bool canFix;
 
+    public InteractableScript? interactable;
+
     public bool grabbingItem = false;
     public bool groundedPlayer;
     public bool canTurn;
@@ -34,21 +36,15 @@ public class PlayerController : MonoBehaviour
         canGrab = false;
         canFix = false;
 
+        interactable = null;
+
         // box.transform.SetParent(this.transform, true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // I commented this code, if it breaks anything, put it back 
 
-        // Y Velocity
-        // if (groundedPlayer && playerVelocity.y < 0)
-        // {
-        //     playerVelocity.y = 0f;
-        // } else {
-        //     playerVelocity.y = rb.velocity.y;
-        // }
     }
 
     // Check if object is grounded
@@ -79,5 +75,13 @@ public class PlayerController : MonoBehaviour
 
     public void GetFixTarget(GameObject otherGameobject) {
         brokenArm = otherGameobject;
+    }
+
+    public void SetInteractable(InteractableScript ic) {
+        interactable = ic;
+    }
+
+    public void ResetInteractable() {
+        interactable = null;
     }
 }

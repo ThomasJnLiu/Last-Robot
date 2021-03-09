@@ -27,6 +27,7 @@ public class PlayerInteractRaycast : MonoBehaviour
         {
             player.GetGrabTaget(hit.transform.gameObject);
             controlsContext.AddContextFromTag(hit.transform.gameObject.tag);
+            // player.SetInteractable()
             player.canGrab = true;
         }
         else
