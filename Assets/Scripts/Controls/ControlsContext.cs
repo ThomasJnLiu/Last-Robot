@@ -80,10 +80,11 @@ public class ControlsContext : MonoBehaviour
      * Set control based on context and extrinsic variables.
      * Returns true if context state is enabled; else false
      **/
-    public void AddContextFromTag(string tag)
+    public void AddContextFromObject(GameObject obj)
     {
         text.enabled = true;
-        text.text = GetContextText(GetContextFromTag(tag));
+        context = GetContextFromTag(obj.tag);
+        text.text = "Press E to " + obj.GetComponent<Interactable>().GetControlPrompt();
     }
 
     /**
@@ -92,13 +93,14 @@ public class ControlsContext : MonoBehaviour
     public void DisableControlsContext()
     {
         text.enabled = false;
+        context = Context.None;
     }
 
     /**
      * Set whether the controls are allowed
      **/
-    public void SetControlsContextAbility(bool isEnabled)
+    public void SetControlsContextAbility(bool isDisabled)
     {
-        isDisabled = isEnabled;
+        isDisabled = isDisabled;
     }
 }

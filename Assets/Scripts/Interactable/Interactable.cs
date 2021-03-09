@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class InteractableScript : MonoBehaviour {
+public class Interactable : MonoBehaviour {
     public enum State {
         Off,
         On,

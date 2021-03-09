@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool canGrab;
     public bool canFix;
 
-    public InteractableScript? interactable;
+    public Interactable? interactable;
 
     public bool grabbingItem = false;
     public bool groundedPlayer;
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         brokenArm = otherGameobject;
     }
 
-    public void SetInteractable(InteractableScript ic) {
+    public void SetInteractable(Interactable ic) {
         interactable = ic;
     }
 

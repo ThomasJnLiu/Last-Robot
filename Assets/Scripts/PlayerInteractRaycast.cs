@@ -25,15 +25,13 @@ public class PlayerInteractRaycast : MonoBehaviour
 
         if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y - 3, transform.position.z), 2f, forward, out hit, 3f, interactableLayer))
         {
-            player.GetGrabTaget(hit.transform.gameObject);
-            controlsContext.AddContextFromTag(hit.transform.gameObject.tag);
-            // player.SetInteractable()
-            player.canGrab = true;
+            controlsContext.AddContextFromObject(hit.transform.gameObject);
+            player.SetInteractable(hit.transform.gameObject.GetComponent<Interactable>());
         }
         else
         {
             controlsContext.DisableControlsContext();
-            player.canGrab = false;
+            player.ResetInteractable();
         }
     }
 
