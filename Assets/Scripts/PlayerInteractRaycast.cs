@@ -20,7 +20,7 @@ public class PlayerInteractRaycast : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-
+ 
         Vector3 forward = transform.TransformDirection(Vector3.forward).normalized;
 
         if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y - 3, transform.position.z), 2f, forward, out hit, 3f, interactableLayer))
