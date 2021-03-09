@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    public enum Parts {
+        Arm,
+        Leg,
+        Head,
+        Torso,
+        None
+    }
+
     public Rigidbody rb;
     public Vector3 playerVelocity;
 
@@ -13,9 +22,11 @@ public class PlayerController : MonoBehaviour
     public GameObject brokenArm;
 
     public bool canGrab;
+    public bool isGrabbing;
     public bool canFix;
 
     public Interactable? interactable;
+    public Dictionary<Parts, int> partsLeft;
 
     public bool grabbingItem = false;
     public bool groundedPlayer;
@@ -38,13 +49,35 @@ public class PlayerController : MonoBehaviour
 
         interactable = null;
 
+        partsLeft = new Dictionary<Parts, int>();
+        partsLeft.Add(Parts.Arm, 2);
+        partsLeft.Add(Parts.Leg, 2);
+        partsLeft.Add(Parts.Head, 1);
+        partsLeft.Add(Parts.Torso, 1);
+
         // box.transform.SetParent(this.transform, true);
     }
 
     // Update is called once per frame
     void Update()
     {
+        int armsLeft;
+        canGrab = false;
+        if (!isGrabbing && partsLeft.TryGetValue(Parts.Arm, out armsLeft)) {
+            if (armsLeft == 2) {
+                canGrab = true;
+            }
+        }
 
+        if (interactable && interactable.state == Interactable.State.Broken) {
+            int piecesLeft = 0;
+            canFix = false;
+            if (partsLeft.TryGetValue(Parts.Arm, out piecesLeft)) {
+                if (piecesLeft > 0) {
+                    canFix = true;
+                }
+            } 
+        }
     }
 
     // Check if object is grounded
@@ -83,5 +116,17 @@ public class PlayerController : MonoBehaviour
 
     public void ResetInteractable() {
         interactable = null;
+    }
+
+    public bool UsePartToFix(Parts part) {
+        int remaining = 0;
+        if (partsLeft.TryGetValue(part, out remaining)) {
+            if (remaining > 0) {
+                partsLeft[part] = remaining-1;
+                return true;
+            }
+        }
+
+        return false;
     }
 }

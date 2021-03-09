@@ -22,7 +22,7 @@ public class Interactable : MonoBehaviour {
     public string brokenPrompt;
 
     // Player body part required to fix interactable object
-    public bool? partToFix;
+    public PlayerController.Parts partToFix;
     
     // Start is called before the first frame update
     void Start() {

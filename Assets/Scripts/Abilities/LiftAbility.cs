@@ -11,8 +11,9 @@ public class LiftAbility : MonoBehaviour
     {
         // Grab button
         if (Input.GetKeyDown ("e") && player.interactable && player.interactable.interactableTag == "Box") {
+            int armsLeft = 0;
             // Check if player is grabbing item
-            if(player.interactable.state == Interactable.State.Off) {
+            if(player.canGrab && player.interactable.state == Interactable.State.Off) {
                 // Setting a lot of variables here, we could conslidate this into a function so it's a little cleaner, esp since these same variables
                 // are also changed in the next else condition
                 player.interactable.transform.SetParent(player.transform, true);
@@ -21,6 +22,8 @@ public class LiftAbility : MonoBehaviour
                 player.interactable.GetComponent<Rigidbody>().isKinematic = true;
 
                 player.interactable.state = Interactable.State.On;
+                player.canGrab = false;
+                player.isGrabbing = true;
 
                 // was having some buggy behaviour when the player's collider intersected with the box's collider
                 // by setting the box collider to a trigger, it makes it so other colliders don't interact with it in physics
@@ -33,6 +36,7 @@ public class LiftAbility : MonoBehaviour
                     player.interactable.GetComponent<Collider>().isTrigger = false;
 
                     player.interactable.state = Interactable.State.Off;
+                    player.isGrabbing = false;
                 }
             }
         }

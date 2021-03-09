@@ -36,16 +36,13 @@ public class AbilityManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("e")) {
-            switch (controlsContext.context) {
-                case ControlsContext.Context.Box:
-                    // grabbable
-                    break;
-                
-                default:
-                    Debug.Log("No interactable items in context");
-                    break;
+            if (player.interactable && player.interactable.state == Interactable.State.Broken && player.canFix) {
+                if (player.UsePartToFix(player.interactable.partToFix)) {
+                    player.interactable.state = Interactable.State.Off;
+                }
             }
         }
+
         // if (Input.GetKeyDown("1")) {
         //     if (isArmDisabled && !isDisabledArmUsed) {
         //         isArmDisabled = false;
