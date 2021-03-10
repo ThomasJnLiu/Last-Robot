@@ -4,5 +4,6 @@ namespace JSAM {
         walksfx
     }
     public enum Music {
+        level1
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using JSAM;
+// using JSAM;
 
 public class LiftAbility : MonoBehaviour
 {
@@ -27,11 +27,10 @@ public class LiftAbility : MonoBehaviour
                 // by setting the box collider to a trigger, it makes it so other colliders don't interact with it in physics
                 player.box.GetComponent<Collider>().isTrigger = true;
                 // PlayerSoundController.PlayOneTime("grab");
-                JSAM.AudioManager.PlaySound(Sounds.grabsfx);
+                // JSAM.AudioManager.PlaySound(Sounds.grabsfx);
             } else {
                 player.grabbingItem = false;
                 player.canTurn = true;
-                player.playerSpeed = 20f;
                 if(player.box){
                     player.box.transform.SetParent(null, true);
                     player.box.GetComponent<Rigidbody>().isKinematic = false;
