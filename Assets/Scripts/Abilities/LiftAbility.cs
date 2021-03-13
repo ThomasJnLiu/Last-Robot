@@ -13,6 +13,7 @@ public class LiftAbility : MonoBehaviour
         // Grab button
         if (Input.GetKeyDown ("c")) {
             if(player.canGrab && !player.grabbingItem) {
+                AudioManager.instance.Play("Pickup");
                 // Setting a lot of variables here, we could conslidate this into a function so it's a little cleaner, esp since these same variables
                 // are also changed in the next else condition
                 player.grabbingItem = true;

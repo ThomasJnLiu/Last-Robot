@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using JSAM;
 
 public class WalkAbility : MonoBehaviour
 {
@@ -21,7 +20,6 @@ public class WalkAbility : MonoBehaviour
         float targetAngle = Mathf.Atan2(player.playerVelocity.x, player.playerVelocity.z) * Mathf.Rad2Deg;        
         // Calculates the direction the player should be moving in, using the angle the player is facing
         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * player.transform.forward;
-        
         if(player.canTurn){
             // Calculates the angle the player should be facing, taking into consideration the position of the camera
             targetAngle = Mathf.Atan2(player.playerVelocity.x, player.playerVelocity.z) * Mathf.Rad2Deg + player.cam.eulerAngles.y;        
@@ -32,9 +30,6 @@ public class WalkAbility : MonoBehaviour
         // Move
         if (player.playerVelocity.x != 0f || player.playerVelocity.z != 0f)
         {
-            if(!AudioManager.IsSoundPlaying(Sounds.walksfx)){
-                JSAM.AudioManager.PlaySound(Sounds.walksfx);
-            }
             // Turns the player in the direction they're moving in
             float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref player.turnSmoothVelocity, player.turnSmoothTime);
             player.transform.rotation = Quaternion.Euler(0f, angle, 0f);

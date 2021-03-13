@@ -80,4 +80,9 @@ public class PlayerController : MonoBehaviour
     public void GetFixTarget(GameObject otherGameobject) {
         brokenArm = otherGameobject;
     }
+
+    public void Step(){
+        Debug.Log("step");
+        AudioManager.instance.Play("Walk");
+    }
 }
