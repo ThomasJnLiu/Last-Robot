@@ -19,7 +19,12 @@ public abstract class NonPlayerInteractable : Interactable
         
     }
 
-    public override void Fix(GameObject actor)
+    public override bool Fix(GameObject actor)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool UnFix(GameObject actor)
     {
         throw new System.NotImplementedException();
     }

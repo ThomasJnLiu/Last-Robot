@@ -11,7 +11,7 @@ public abstract class Interactable : MonoBehaviour
         On,
         Broken
     }
-        
+
     // Tag for context detection
     public string interactableTag;
 
@@ -24,27 +24,41 @@ public abstract class Interactable : MonoBehaviour
         gameObject.tag = interactableTag;
     }
 
-    public abstract void Use(GameObject actor);
+    public abstract bool Use(GameObject actor);
 
-    public abstract void Reset(GameObject actor);
+    public abstract bool Reset(GameObject actor);
 
-    public abstract void Fix(GameObject actor);
+    public abstract bool Fix(GameObject actor);
+
+    public abstract bool UnFix(GameObject actor);
 
     public void Interact(GameObject actor)
     {
         switch (state)
         {
-            case State.Broken:
-                state = State.Off;
-                Fix(actor);
-                break;
             case State.Off:
-                state = State.On;
-                Use(actor);
+                if (Use(actor))
+                    state = State.On;
                 break;
             case State.On:
-                state = State.Off;
-                Reset(actor);
+                if (Reset(actor))
+                    state = State.Off;
+                break;
+        }
+    }
+
+    public void FixUnfix(GameObject actor)
+    {
+        switch (state)
+        {
+            case State.Broken:
+                if (Fix(actor))
+                    state = State.Off;
+                break;
+
+            case State.Off:
+                if (UnFix(actor))
+                    state = State.Broken;
                 break;
         }
     }

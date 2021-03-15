@@ -6,9 +6,11 @@ public class PlayerInteractRaycast : MonoBehaviour
 {
     public PlayerController player;
     public LayerMask interactableLayer;
-    public bool hittingInteractable = false;
 
     public ControlsContext controlsContext;
+    public delegate void ContextAction(PlayerInteractable interactable);
+    public static event ContextAction OnContextEnter;
+    public static event ContextAction OnContextExit;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +27,11 @@ public class PlayerInteractRaycast : MonoBehaviour
 
         if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y - 3, transform.position.z), 2f, forward, out hit, 3f, interactableLayer))
         {
-            controlsContext.AddContextFromObject(hit.transform.gameObject);
-            player.SetInteractable(hit.transform.gameObject.GetComponent<PlayerInteractable>());
+            OnContextEnter(hit.transform.gameObject.GetComponent<PlayerInteractable>());
         }
         else
         {
-            controlsContext.DisableControlsContext();
-            player.ResetInteractable();
+            OnContextExit(null);
         }
     }
 

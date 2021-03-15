@@ -17,7 +17,9 @@ public class AbilityManager : MonoBehaviour
     public Text controls;
     public Text extras;
 
-    public PlayerController player;
+    private PlayerController player;
+    private PlayerInteraction playerInteraction;
+
     public ControlsContext controlsContext;
 
     public Platform bluePlatform;
@@ -30,16 +32,24 @@ public class AbilityManager : MonoBehaviour
     {
         isArmDisabled = false;
         isDisabledArmUsed = false;
+
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        player = playerObject.GetComponent<PlayerController>();
+        playerInteraction = playerObject.GetComponent<PlayerInteraction>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown("e")) {
-            if (player.interactable) {
-                if (player.UsePartToFix(player.interactable.partToFix, 0)) {
-                    player.interactable.state = Interactable.State.Off;
-                }
+            if (playerInteraction.interactable) {
+                playerInteraction.interactable.Interact(player.gameObject);
+            }
+        }
+
+        if (Input.GetKeyDown("f")) {
+            if (playerInteraction.interactable) {
+                playerInteraction.interactable.FixUnfix(player.gameObject);
             }
         }
 

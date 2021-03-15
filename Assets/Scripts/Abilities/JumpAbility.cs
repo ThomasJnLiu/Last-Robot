@@ -9,7 +9,6 @@ public class JumpAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(player.groundedPlayer);
         // Changes the height position of the player.
         if (Input.GetButtonDown("Jump") && player.groundedPlayer)
         {
@@ -20,8 +19,6 @@ public class JumpAbility : MonoBehaviour
             
             player.animator.Play("Jumping_Animation");
            //player.animator.SetBool("isJumping", true);
-            Debug.Log("Jumping: ");
-            Debug.Log(player.animator.GetBool("isJumping"));
         }
     }
 }

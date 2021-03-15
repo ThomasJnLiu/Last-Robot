@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public enum Parts {
-        Arm,
-        Leg,
-        Head,
-        Torso,
-        None
-    }
-
     public Rigidbody rb;
     public Vector3 playerVelocity;
 
@@ -24,9 +15,6 @@ public class PlayerController : MonoBehaviour
     public bool canGrab;
     public bool isGrabbing;
     public bool canFix;
-
-    public PlayerInteractable interactable;
-    public Dictionary<Parts, int> partsLeft;
 
     public bool grabbingItem = false;
     public bool groundedPlayer;
@@ -46,38 +34,28 @@ public class PlayerController : MonoBehaviour
 
         canGrab = false;
         canFix = false;
-
-        interactable = null;
-
-        partsLeft = new Dictionary<Parts, int>();
-        partsLeft.Add(Parts.Arm, 2);
-        partsLeft.Add(Parts.Leg, 2);
-        partsLeft.Add(Parts.Head, 1);
-        partsLeft.Add(Parts.Torso, 1);
-
-        // box.transform.SetParent(this.transform, true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        int armsLeft;
-        canGrab = false;
-        if (!isGrabbing && partsLeft.TryGetValue(Parts.Arm, out armsLeft)) {
-            if (armsLeft == 2) {
-                canGrab = true;
-            }
-        }
+        // int armsLeft;
+        // canGrab = false;
+        // if (!isGrabbing && partsLeft.TryGetValue(Parts.Arm, out armsLeft)) {
+        //     if (armsLeft == 2) {
+        //         canGrab = true;
+        //     }
+        // }
 
-        if (interactable && interactable.state == Interactable.State.Broken) {
-            int piecesLeft = 0;
-            canFix = false;
-            if (partsLeft.TryGetValue(Parts.Arm, out piecesLeft)) {
-                if (piecesLeft > 0) {
-                    canFix = true;
-                }
-            } 
-        }
+        // if (interactable && interactable.state == Interactable.State.Broken) {
+        //     int piecesLeft = 0;
+        //     canFix = false;
+        //     if (partsLeft.TryGetValue(Parts.Arm, out piecesLeft)) {
+        //         if (piecesLeft > 0) {
+        //             canFix = true;
+        //         }
+        //     } 
+        // }
     }
 
     // Check if object is grounded
@@ -108,29 +86,5 @@ public class PlayerController : MonoBehaviour
 
     public void GetFixTarget(GameObject otherGameobject) {
         brokenArm = otherGameobject;
-    }
-
-    public void SetInteractable(PlayerInteractable ic) {
-        interactable = ic;
-    }
-
-    public void ResetInteractable() {
-        interactable = null;
-    }
-
-    public int HasRemaining(Parts parts) {
-        int remaining = 0;
-        partsLeft.TryGetValue(parts, out remaining);
-        return remaining;
-    }
-
-    public bool UsePartToFix(Parts part, int count) {
-        int remaining = HasRemaining(part);
-        if (remaining >= count) {
-            partsLeft[part] = remaining-count;
-            return true;
-        }
-
-        return false;
     }
 }

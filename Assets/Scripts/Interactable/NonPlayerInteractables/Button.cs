@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : PlayerInteractable
+public class Button : NonPlayerInteractable
 {
     public Interactable target;
 
@@ -18,16 +18,22 @@ public class Button : PlayerInteractable
         
     }
 
-    public override void Use(GameObject actor)
+    public override bool Use(GameObject actor)
     {
         if (actor.GetComponent<PlayerController>() != null) {
             target.Interact(gameObject);
-            state = State.Off;
         }
+
+        return false;
     }
 
-    public override void Reset(GameObject actor)
+    public override bool Reset(GameObject actor)
     {
-        return;
+        return true;
+    }
+
+    private void OnCollisionEnter (Collision collision)
+    {
+        target.Interact(gameObject);
     }
 }

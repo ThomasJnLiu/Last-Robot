@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Platform : NonPlayerInteractable
 {
-    private bool open, active;
+    public bool open, active;
     private static float speed = 15;
     private GameObject platform;
     private static float openLimit;
@@ -68,14 +68,16 @@ public class Platform : NonPlayerInteractable
             active = true;
     }
 
-    public override void Use(GameObject actor)
-    {
-        Use(actor, false);
-    }
-
-    public override void Reset(GameObject actor)
+    public override bool Use(GameObject actor)
     {
         Use(actor, true);
+        return true;
+    }
+
+    public override bool Reset(GameObject actor)
+    {
+        Use(actor, false);
+        return true;
     }
 
 }

@@ -8,6 +8,7 @@ TagManager:
   - BrokenArm
   - Lever
   - Interactable
+  - Platform
   layers:
   - Default
   - TransparentFX

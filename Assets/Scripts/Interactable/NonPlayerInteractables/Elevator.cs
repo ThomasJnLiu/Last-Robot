@@ -77,13 +77,15 @@ public class Elevator : NonPlayerInteractable
             active = true;
     }
 
-    public override void Use(GameObject actor)
+    public override bool Use(GameObject actor)
     {
         Use(actor, false);
+        return true;
     }
 
-    public override void Reset(GameObject actor)
+    public override bool Reset(GameObject actor)
     {
         Use(actor, true);
+        return true;
     }
 }

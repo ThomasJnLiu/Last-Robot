@@ -4,40 +4,37 @@ using UnityEngine;
 
 public class Box : PlayerInteractable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     /*
-     * Pick up the box. Assume that it's possible. The checking SHOULD happen in ControlsContext
+     * Pick up the box.
      */
-    public override void Use(GameObject actor)
+    public override bool Use(GameObject actor)
     {
         PlayerController player = actor.GetComponent<PlayerController>();
+        PlayerInteraction playerInteraction = actor.GetComponent<PlayerInteraction>();
 
-        transform.SetParent(player.transform, true);
-        transform.position = (player.transform.forward *5f) + player.transform.position;
-        transform.localRotation = Quaternion.Euler(0,0,0);
-        GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<Collider>().enabled = false;
+        if (playerInteraction.canInteract) {
+            Debug.Log("Can Use");
+            transform.SetParent(player.transform, true);
+            transform.position = (player.transform.forward *5f) + player.transform.position;
+            transform.localRotation = Quaternion.Euler(0,0,0);
+            GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<Collider>().isTrigger = true;
 
-        state = State.On;
+            return true;
+        } else {
+            Debug.Log("Can't use");
+        }
+
+        return false;
     }
 
-    public override void Reset(GameObject actor)
+    public override bool Reset(GameObject actor)
     {
         transform.SetParent(null, true);
         GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Collider>().enabled = true;
+        GetComponent<Collider>().isTrigger = false;
 
-        state = State.Off;
+        return true;
     }
 }

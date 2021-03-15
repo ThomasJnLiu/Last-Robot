@@ -8,13 +8,15 @@ public abstract class PlayerInteractable : Interactable
     public string offPrompt;
     public string onPrompt;
     public string brokenPrompt;
+    public string fixedPrompt;
+    public bool wasInitiallyBroken;
 
 
     // Player body part required to fix interactable object
-    public PlayerController.Parts partToFix;
-    public int partsToFixCount;
-    public PlayerController.Parts partsToUse;
-    public int partsToUseCount; 
+    public PlayerInteraction.Parts partToFix;
+    public int partToFixCount;
+    public PlayerInteraction.Parts partToUse;
+    public int partToUseCount; 
 
     // Start is called before the first frame update
     void Start()
@@ -30,31 +32,42 @@ public abstract class PlayerInteractable : Interactable
     }
 
     /*
-* Get control prompt for interactable based on its state
-*/
-    public string GetControlPrompt()
+     * Get control prompt for interactable based on its state
+     */
+    public (bool, string, bool, string) GetControlPrompt()
     {
         switch (state)
         {
             case State.Off:
-                return offPrompt;
+                return (true, offPrompt, wasInitiallyBroken, fixedPrompt);
             case State.On:
-                return onPrompt;
+                return (true, onPrompt, false, "");
             default:
-                return brokenPrompt;
+                return (false, "", true, brokenPrompt);
         }
     }
 
-    public override void Fix(GameObject actor)
+    public override bool Fix(GameObject actor)
     {
-        PlayerController player = actor.GetComponent<PlayerController>();
+        PlayerInteraction player = actor.GetComponent<PlayerInteraction>();
 
         if (state == State.Broken && player.canFix)
         {
-            if (player.UsePartToFix(partToFix, partsToFixCount))
-            {
-                state = State.Off;
-            }
+            return player.UsePart(partToFix, partToFixCount);
         }
+
+        return false;
+    }
+
+    public override bool UnFix(GameObject actor)
+    {
+        PlayerInteraction player = actor.GetComponent<PlayerInteraction>();
+
+        if (state == State.Off && partToFix != PlayerInteraction.Parts.None && player.usedPartToFix)
+        {
+            return player.ReturnPart(partToFix, partToFixCount);
+        }
+
+        return false;
     }
 }

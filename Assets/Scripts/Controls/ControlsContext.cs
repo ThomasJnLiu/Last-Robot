@@ -6,101 +6,67 @@ public class ControlsContext : MonoBehaviour
 {
     // Status
     public bool isDisabled {get; private set; }
-    public Context context { get; private set; }
 
     // Context Out
     private Text text;
-
-    /**
-     * Three different contexts
-     **/
-    public enum Context
-    {
-        Box,
-        Broken_Lever,
-        Lever,
-        None
-    }
+    
+    // Player scripts
+    private PlayerController player;
+    public PlayerInteraction playerInteraction;
+    private PlayerInteractable playerInteractable;
 
     private void Start()
     {
         text = GetComponent<Text>();
         text.enabled = false;
 
-        // Initial
-        isDisabled = false;
-        context = Context.None;
+        // Get player scripts
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        player = playerObject.GetComponent<PlayerController>();
+        playerInteraction = playerObject.GetComponent<PlayerInteraction>();
+
+        PlayerInteractRaycast.OnContextEnter += RegisterInteractable;
+        PlayerInteractRaycast.OnContextExit += RemoveInteractable;
     }
 
-    /**
-     * Get context based on the tag that the player is near
-     **/
-    Context GetContextFromTag(string tag)
-    {
-        switch (tag)
-        {
-            case "Box":
-                return Context.Box;
+    private void Update() {
+        text.text = "";
+        if (text.enabled && playerInteractable) {
+            (bool canItemBeUsed, string usePrompt, bool canItemBeFixed, string fixPrompt) = playerInteractable.GetControlPrompt();
+            if (canItemBeFixed) {
+                text.text = "Press F to " + fixPrompt;
+                if (playerInteraction.isInteracting || !(playerInteraction.canFix || playerInteraction.usedPartToFix)) {
+                    text.text += " (Disabled)";
+                }
+                text.text += "\n";
+            }
 
-            case "Broken_Lever":
-                return Context.Broken_Lever;
-
-            case "Lever":
-                return Context.Lever;
-            
-            default:
-                return Context.None;
+            if (canItemBeUsed) {
+                text.text += "Press E to " + usePrompt;
+                if (!playerInteraction.canInteract) {
+                    text.text += " (Disabled)";
+                }
+            }
         }
     }
-
-    /**
-     * Get prompt text based on context
-     **/
-    string GetContextText(Context context)
-    {
-        switch (context)
-        {
-            case Context.Box:
-                return "Pick up box";
-
-            case Context.Broken_Lever:
-                return "Disassemble arm to fix lever";
-
-            case Context.Lever:
-                return "Pull lever";
-            // None
-            default:
-                return "";
-        }
-    }
-
-     
 
     /**
      * Set control based on context and extrinsic variables.
      * Returns true if context state is enabled; else false
      **/
-    public void AddContextFromObject(GameObject obj)
+    public void RegisterInteractable(PlayerInteractable interactable)
     {
         text.enabled = true;
+        playerInteractable = interactable;
         // context = GetContextFromTag(obj.tag);
-        text.text = "Press E to " + obj.GetComponent<PlayerInteractable>().GetControlPrompt();
     }
 
     /**
      *  Disable controls context when the object leaves the player's context
      **/
-    public void DisableControlsContext()
+    public void RemoveInteractable(PlayerInteractable interactable)
     {
         text.enabled = false;
-        context = Context.None;
-    }
-
-    /**
-     * Set whether the controls are allowed
-     **/
-    public void SetControlsContextAbility(bool isDisabled)
-    {
-        isDisabled = isDisabled;
+        playerInteractable = null;
     }
 }
