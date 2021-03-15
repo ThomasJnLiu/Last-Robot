@@ -83,8 +83,8 @@ public class ControlsContext : MonoBehaviour
     public void AddContextFromObject(GameObject obj)
     {
         text.enabled = true;
-        context = GetContextFromTag(obj.tag);
-        text.text = "Press E to " + obj.GetComponent<Interactable>().GetControlPrompt();
+        // context = GetContextFromTag(obj.tag);
+        text.text = "Press E to " + obj.GetComponent<PlayerInteractable>().GetControlPrompt();
     }
 
     /**

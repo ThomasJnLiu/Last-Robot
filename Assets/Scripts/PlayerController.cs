@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrabbing;
     public bool canFix;
 
-    public Interactable? interactable;
+    public PlayerInteractable interactable;
     public Dictionary<Parts, int> partsLeft;
 
     public bool grabbingItem = false;
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         brokenArm = otherGameobject;
     }
 
-    public void SetInteractable(Interactable ic) {
+    public void SetInteractable(PlayerInteractable ic) {
         interactable = ic;
     }
 
@@ -118,13 +118,17 @@ public class PlayerController : MonoBehaviour
         interactable = null;
     }
 
-    public bool UsePartToFix(Parts part) {
+    public int HasRemaining(Parts parts) {
         int remaining = 0;
-        if (partsLeft.TryGetValue(part, out remaining)) {
-            if (remaining > 0) {
-                partsLeft[part] = remaining-1;
-                return true;
-            }
+        partsLeft.TryGetValue(parts, out remaining);
+        return remaining;
+    }
+
+    public bool UsePartToFix(Parts part, int count) {
+        int remaining = HasRemaining(part);
+        if (remaining >= count) {
+            partsLeft[part] = remaining-count;
+            return true;
         }
 
         return false;

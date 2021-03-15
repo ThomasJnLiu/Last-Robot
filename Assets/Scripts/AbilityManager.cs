@@ -20,7 +20,7 @@ public class AbilityManager : MonoBehaviour
     public PlayerController player;
     public ControlsContext controlsContext;
 
-    public BluePlatform bluePlatform;
+    public Platform bluePlatform;
     
 
     public TextMesh statusIndicator;
@@ -36,8 +36,8 @@ public class AbilityManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("e")) {
-            if (player.interactable && player.interactable.state == Interactable.State.Broken && player.canFix) {
-                if (player.UsePartToFix(player.interactable.partToFix)) {
+            if (player.interactable) {
+                if (player.UsePartToFix(player.interactable.partToFix, 0)) {
                     player.interactable.state = Interactable.State.Off;
                 }
             }

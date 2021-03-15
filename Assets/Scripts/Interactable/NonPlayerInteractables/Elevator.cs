@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedPlatform : MonoBehaviour
+public class Elevator : NonPlayerInteractable
 {
-    public bool lifted, active;
+    private bool lifted, active;
     private static float speed = 15;
     private GameObject platform;
     private static float liftLimit = 15;
     private static float dropLimit = 3;
     private static int delay;
     private static float platformTimer = 0.0f;
-    private static float platformDelay = 3.0f;
+    private static float platformDelay = 5.0f;
     
     
     // Start is called before the first frame update
@@ -44,7 +44,7 @@ public class RedPlatform : MonoBehaviour
     }
 
     
-    public void dropPlatform()
+    private void dropPlatform()
     {
         if (platform.transform.position.y > dropLimit)
         {
@@ -59,7 +59,7 @@ public class RedPlatform : MonoBehaviour
         }
     }
 
-    public void liftPlatform()
+    private void liftPlatform()
     {
         if (platform.transform.position.y < liftLimit)
         {
@@ -70,5 +70,20 @@ public class RedPlatform : MonoBehaviour
             // Platform is lifted
             lifted = true;
         }
+    }
+
+    private void Use(GameObject actor, bool isLifted) {
+        if (!active && actor == trigger && lifted == isLifted)
+            active = true;
+    }
+
+    public override void Use(GameObject actor)
+    {
+        Use(actor, false);
+    }
+
+    public override void Reset(GameObject actor)
+    {
+        Use(actor, true);
     }
 }

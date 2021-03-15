@@ -26,7 +26,7 @@ public class PlayerInteractRaycast : MonoBehaviour
         if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y - 3, transform.position.z), 2f, forward, out hit, 3f, interactableLayer))
         {
             controlsContext.AddContextFromObject(hit.transform.gameObject);
-            player.SetInteractable(hit.transform.gameObject.GetComponent<Interactable>());
+            player.SetInteractable(hit.transform.gameObject.GetComponent<PlayerInteractable>());
         }
         else
         {

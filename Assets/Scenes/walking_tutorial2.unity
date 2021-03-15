@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964133, b: 0.57481736, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3887,7 +3887,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh61400
+  m_Name: pb_Mesh21840
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12157,6 +12157,7 @@ MonoBehaviour:
   controls: {fileID: 1017410020}
   extras: {fileID: 540038729}
   player: {fileID: 1982971077}
+  controlsContext: {fileID: 0}
   bluePlatform: {fileID: 773273553}
   statusIndicator: {fileID: 40575435}
 --- !u!1001 &1700765491
@@ -12768,7 +12769,9 @@ MonoBehaviour:
   box: {fileID: 4619271336355227575}
   brokenArm: {fileID: 0}
   canGrab: 1
+  isGrabbing: 0
   canFix: 0
+  interactable: {fileID: 0}
   grabbingItem: 0
   groundedPlayer: 0
   canTurn: 1
@@ -12939,7 +12942,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh61316
+  m_Name: pb_Mesh21736
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

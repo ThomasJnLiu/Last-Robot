@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BluePlatform : MonoBehaviour
+public class Platform : NonPlayerInteractable
 {
-    public bool open, active;
+    private bool open, active;
     private static float speed = 15;
     private GameObject platform;
     private static float openLimit;
@@ -35,7 +35,7 @@ public class BluePlatform : MonoBehaviour
         }
     }
     
-    public void closePlatform()
+    private void closePlatform()
     {
         if (platform.transform.position.z > closedLimit)
         {
@@ -49,7 +49,7 @@ public class BluePlatform : MonoBehaviour
         }
     }
 
-    public void openPlatform()
+    private void openPlatform()
     {
         if (platform.transform.position.z < openLimit)
         {
@@ -62,5 +62,20 @@ public class BluePlatform : MonoBehaviour
             active = false;
         }
     }
-    
+
+    private void Use(GameObject actor, bool isOpen) {
+        if (!active && trigger == actor && open == isOpen)
+            active = true;
+    }
+
+    public override void Use(GameObject actor)
+    {
+        Use(actor, false);
+    }
+
+    public override void Reset(GameObject actor)
+    {
+        Use(actor, true);
+    }
+
 }

@@ -3,49 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Interactable : MonoBehaviour {
-    public enum State {
+public abstract class Interactable : MonoBehaviour
+{
+    public enum State
+    {
         Off,
         On,
         Broken
     }
-
+        
     // Tag for context detection
     public string interactableTag;
 
     // Interactable state
     public State state;
 
-    // Control prompt to display based on state
-    public string offPrompt;
-    public string onPrompt;
-    public string brokenPrompt;
-
-    // Player body part required to fix interactable object
-    public PlayerController.Parts partToFix;
-    
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         gameObject.tag = interactableTag;
-        gameObject.layer = 7;
     }
 
-    // Update is called once per frame
-    void Update() {
-        
-    }
+    public abstract void Use(GameObject actor);
 
-    /*
-    * Get control prompt for interactable based on its state
-    */
-    public string GetControlPrompt() {
-        switch (state) {
+    public abstract void Reset(GameObject actor);
+
+    public abstract void Fix(GameObject actor);
+
+    public void Interact(GameObject actor)
+    {
+        switch (state)
+        {
+            case State.Broken:
+                state = State.Off;
+                Fix(actor);
+                break;
             case State.Off:
-                return offPrompt;
+                state = State.On;
+                Use(actor);
+                break;
             case State.On:
-                return onPrompt;
-            default:
-                return brokenPrompt;
+                state = State.Off;
+                Reset(actor);
+                break;
         }
     }
 }

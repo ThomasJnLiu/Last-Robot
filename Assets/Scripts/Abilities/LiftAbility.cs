@@ -11,17 +11,11 @@ public class LiftAbility : MonoBehaviour
     {
         // Grab button
         if (Input.GetKeyDown ("e") && player.interactable && player.interactable.interactableTag == "Box") {
-            int armsLeft = 0;
+
             // Check if player is grabbing item
             if(player.canGrab && player.interactable.state == Interactable.State.Off) {
                 // Setting a lot of variables here, we could conslidate this into a function so it's a little cleaner, esp since these same variables
                 // are also changed in the next else condition
-                player.interactable.transform.SetParent(player.transform, true);
-                player.interactable.transform.position = (player.transform.forward *5f) + player.transform.position;
-                player.interactable.transform.localRotation = Quaternion.Euler(0,0,0);
-                player.interactable.GetComponent<Rigidbody>().isKinematic = true;
-
-                player.interactable.state = Interactable.State.On;
                 player.canGrab = false;
                 player.isGrabbing = true;
 
@@ -30,12 +24,7 @@ public class LiftAbility : MonoBehaviour
                 player.interactable.GetComponent<Collider>().isTrigger = true;
                 PlayerSoundController.PlayOneTime("grab");
             } else {
-                if(player.interactable) {
-                    player.interactable.transform.SetParent(null, true);
-                    player.interactable.GetComponent<Rigidbody>().isKinematic = false;
-                    player.interactable.GetComponent<Collider>().isTrigger = false;
-
-                    player.interactable.state = Interactable.State.Off;
+                if(player.interactable && player.interactable.state == Interactable.State.On) {
                     player.isGrabbing = false;
                 }
             }
