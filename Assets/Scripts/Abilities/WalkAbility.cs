@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JSAM;
 
 public class WalkAbility : MonoBehaviour
 {
@@ -35,7 +36,9 @@ public class WalkAbility : MonoBehaviour
         // Move
         if (player.playerVelocity.x != 0f || player.playerVelocity.z != 0f)
         {
-            PlayerSoundController.PlayWalk(true);
+            if(!AudioManager.IsSoundPlaying(Sounds.walksfx)){
+                JSAM.AudioManager.PlaySound(Sounds.walksfx);
+            }
             // Turns the player in the direction they're moving in
             float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref player.turnSmoothVelocity, player.turnSmoothTime);
             player.transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -43,7 +46,7 @@ public class WalkAbility : MonoBehaviour
             // gameObject.transform.forward = move;
             player.animator.SetBool("isRunning", true);
         } else {
-            PlayerSoundController.PlayWalk(false);
+            // PlayerSoundController.PlayWalk(false);
             player.animator.SetBool("isRunning", false);
         }
 
