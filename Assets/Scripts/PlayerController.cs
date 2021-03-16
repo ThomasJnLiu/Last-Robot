@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject brokenArm;
 
     public bool canGrab;
+    public bool isGrabbing;
     public bool canFix;
 
     public bool grabbingItem = false;
@@ -33,21 +34,27 @@ public class PlayerController : MonoBehaviour
 
         canGrab = false;
         canFix = false;
-
-        // box.transform.SetParent(this.transform, true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // I commented this code, if it breaks anything, put it back 
+        // int armsLeft;
+        // canGrab = false;
+        // if (!isGrabbing && partsLeft.TryGetValue(Parts.Arm, out armsLeft)) {
+        //     if (armsLeft == 2) {
+        //         canGrab = true;
+        //     }
+        // }
 
-        // Y Velocity
-        // if (groundedPlayer && playerVelocity.y < 0)
-        // {
-        //     playerVelocity.y = 0f;
-        // } else {
-        //     playerVelocity.y = rb.velocity.y;
+        // if (interactable && interactable.state == Interactable.State.Broken) {
+        //     int piecesLeft = 0;
+        //     canFix = false;
+        //     if (partsLeft.TryGetValue(Parts.Arm, out piecesLeft)) {
+        //         if (piecesLeft > 0) {
+        //             canFix = true;
+        //         }
+        //     } 
         // }
     }
 

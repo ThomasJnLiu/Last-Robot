@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Box
   - BrokenArm
+  - Lever
+  - Interactable
+  - Platform
   layers:
   - Default
   - TransparentFX
