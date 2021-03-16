@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/EnvironmentScene1 1.unity
+    guid: fdf2adeacfbad445aaf9251108f2eae3
+  - enabled: 1
     path: Assets/Scenes/walking_tutorial1.unity
     guid: 993599982852dd04db0e811acb12acfb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/multiple animation.unity
     guid: 0a6e3140890778941a281b9722914dde
   - enabled: 1
     path: Assets/Scenes/walking_tutorial2.unity
     guid: 7849d204f258fee418d7c37bb284b338
+  - enabled: 1
+    path: Assets/Scenes/walking_tutorial3.unity
+    guid: ad0c84c1ffdfb234085951710484f2f0
   m_configObjects: {}
