@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964128, b: 0.5748166, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964133, b: 0.57481736, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1710,7 +1710,6 @@ GameObject:
   - component: {fileID: 906049790}
   - component: {fileID: 906049789}
   - component: {fileID: 906049788}
-  - component: {fileID: 906049793}
   m_Layer: 0
   m_Name: LiftPlatform
   m_TagString: Untagged
@@ -2012,20 +2011,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &906049793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906049787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09eba54a2348a2c48b3847896b00bec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifted: 0
-  active: 0
 --- !u!1 &1117549061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2778,7 +2763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8bd134ee7fbbaf4e8e19cb81c1ea5ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redPlatform: {fileID: 906049793}
+  redPlatform: {fileID: 0}
 --- !u!1 &1137169169
 GameObject:
   m_ObjectHideFlags: 3
@@ -2979,7 +2964,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh60024
+  m_Name: pb_Mesh22386
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11173,6 +11158,7 @@ MonoBehaviour:
   controls: {fileID: 414763853}
   extras: {fileID: 63262595}
   player: {fileID: 1982971077}
+  controlsContext: {fileID: 0}
   bluePlatform: {fileID: 773273553}
   statusIndicator: {fileID: 40575435}
 --- !u!1001 &1700765491
@@ -11784,7 +11770,9 @@ MonoBehaviour:
   box: {fileID: 0}
   brokenArm: {fileID: 0}
   canGrab: 0
+  isGrabbing: 0
   canFix: 0
+  interactable: {fileID: 0}
   grabbingItem: 0
   groundedPlayer: 0
   canTurn: 1
