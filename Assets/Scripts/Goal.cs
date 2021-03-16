@@ -26,6 +26,8 @@ public class Goal : MonoBehaviour
             SceneManager.LoadScene("walking_tutorial3");
         }else if(scene.name == "walking_tutorial3"){
             SceneManager.LoadScene("walking_tutorial2");
+        }else if(scene.name == "EnvironmentScene1"){
+            SceneManager.LoadScene("EnvironmentScene2");
         }
 
     }
