@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class JumpAbility : MonoBehaviour
 {
-    public PlayerController player;
+    private PlayerController player;
+
+    void Start() {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
 
     // Update is called once per frame
     void Update()

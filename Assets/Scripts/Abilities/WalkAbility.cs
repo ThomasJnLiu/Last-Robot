@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class WalkAbility : MonoBehaviour
 {
-    public PlayerController player;
+    private PlayerController player;
+
+    void Start() {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
 
 
     // Update is called once per frame
