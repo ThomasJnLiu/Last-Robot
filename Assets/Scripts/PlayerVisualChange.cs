@@ -7,21 +7,23 @@ public class PlayerVisualChange : MonoBehaviour
     public enum bodyStates {full, oneArm};
     int totalStates = 2;
     string[] modelNames = new string[2]{"WalkCycle (temp)(in place)", "GAR One Arm"};
+    private GameObject arm;
     GameObject[] models;
     
     Animator animator;
 
     bodyStates previousState;
-    public bodyStates currentState;
+    public static bodyStates currentState;
     
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
         models = new GameObject[totalStates];
-        defaultState();
+        //defaultState();
         previousState = bodyStates.full;
         currentState = bodyStates.full;
+        arm = GameObject.Find("GAR_Arms");
     }
 
     // Update is called once per frame
@@ -29,13 +31,20 @@ public class PlayerVisualChange : MonoBehaviour
     {
         
         if (previousState == currentState){return;}
+
+        if (currentState == bodyStates.oneArm)
+        {
+            arm.SetActive(false);
+        }
+        else if (currentState == bodyStates.full)
+        {
+            arm.SetActive(true);
+        }
+        //Debug.Log("Change in state: " + previousState + " -> " + currentState);
+        //Debug.Log("Change in state: " + models[(int)previousState] + " -> " + models[(int)currentState]);
         
-        
-        Debug.Log("Change in state: " + previousState + " -> " + currentState);
-        Debug.Log("Change in state: " + models[(int)previousState] + " -> " + models[(int)currentState]);
-        
-        models[(int)currentState].SetActive(true);
-        models[(int)previousState].SetActive(false);
+        //models[(int)currentState].SetActive(true);
+        //models[(int)previousState].SetActive(false);
         
         animator.SetInteger("BodyState", (int)currentState);
 

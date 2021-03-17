@@ -53,12 +53,18 @@ public abstract class Interactable : MonoBehaviour
         {
             case State.Broken:
                 if (Fix(actor))
+                {
                     state = State.Off;
+                    PlayerVisualChange.currentState = PlayerVisualChange.bodyStates.oneArm;
+                }
                 break;
 
             case State.Off:
                 if (UnFix(actor))
+                {
                     state = State.Broken;
+                    PlayerVisualChange.currentState = PlayerVisualChange.bodyStates.full;
+                }
                 break;
         }
     }
