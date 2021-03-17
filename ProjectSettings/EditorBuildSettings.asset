@@ -17,10 +17,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/walking_tutorial2.unity
     guid: 7849d204f258fee418d7c37bb284b338
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/walking_tutorial3.unity
     guid: ad0c84c1ffdfb234085951710484f2f0
   - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
     path: Assets/Scenes/EnvironmentScene2.unity
-    guid: 5682d91be11ab454f938c2a3bc46601e
+    guid: 29ee8de9a70cdc247a0c267e1c43e7d0
+  - enabled: 1
+    path: Assets/Scenes/EnvironmentScene3.unity
+    guid: 6ff0c3bc77cd51040b48764f997d892b
   m_configObjects: {}

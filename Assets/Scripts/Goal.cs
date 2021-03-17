@@ -29,6 +29,9 @@ public class Goal : MonoBehaviour
         }else if(scene.name == "EnvironmentScene1"){
             SceneManager.LoadScene("EnvironmentScene2");
         }
+        else if(scene.name == "EnvironmentScene2"){
+            SceneManager.LoadScene("EnvironmentScene3");
+        }
 
     }
 }
