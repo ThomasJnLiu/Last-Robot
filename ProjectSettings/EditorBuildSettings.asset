@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/walking_tutorial2.unity
     guid: 7849d204f258fee418d7c37bb284b338
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/walking_tutorial3.unity
     guid: ad0c84c1ffdfb234085951710484f2f0
   - enabled: 0
