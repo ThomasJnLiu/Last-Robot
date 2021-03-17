@@ -40,6 +40,12 @@ public class PlayerInteraction : MonoBehaviour
         PlayerInteractRaycast.OnContextExit += ResetInteractable;
     }
 
+    void OnDestroy() {
+        Debug.Log("Oh No!");
+        PlayerInteractRaycast.OnContextEnter -= SetInteractable;
+        PlayerInteractRaycast.OnContextExit -= ResetInteractable;
+    }
+
     // Update is called once per frame
     void Update()
     {

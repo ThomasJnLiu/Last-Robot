@@ -29,6 +29,12 @@ public class ControlsContext : MonoBehaviour
         PlayerInteractRaycast.OnContextExit += RemoveInteractable;
     }
 
+    void OnDestroy() {
+        Debug.Log("Oh No!");
+        PlayerInteractRaycast.OnContextEnter -= RegisterInteractable;
+        PlayerInteractRaycast.OnContextExit -= RemoveInteractable;
+    } 
+
     private void Update() {
         text.text = "";
         if (text.enabled && playerInteractable) {
