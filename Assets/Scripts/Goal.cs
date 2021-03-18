@@ -11,7 +11,6 @@ public class Goal : MonoBehaviour
     void Start()
     {
         scene = SceneManager.GetActiveScene();
-        Debug.Log("Name: " + scene.name);
         
     }
 
@@ -31,6 +30,9 @@ public class Goal : MonoBehaviour
         }
         else if(scene.name == "EnvironmentScene2"){
             SceneManager.LoadScene("EnvironmentScene3");
+        }
+        else if(scene.name == "EnvironmentScene3"){
+            SceneManager.LoadScene("EnvironmentScene4");
         }
 
     }

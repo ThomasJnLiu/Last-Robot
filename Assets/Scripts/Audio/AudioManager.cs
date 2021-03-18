@@ -37,7 +37,6 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
 
-        Play("LevelTheme");
     }
 
     public void Play(string name){
@@ -47,6 +46,15 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
-        Debug.Log("playing " + name);
+        // Debug.Log("playing " + name);
+    }
+    public void Stop(string name){
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if(s == null){
+            Debug.LogWarning("Sound " + name + " not found!");
+            return;
+        }
+        s.source.Stop();
+        // Debug.Log("playing " + name);
     }
 }

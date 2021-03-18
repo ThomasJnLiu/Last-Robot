@@ -18,14 +18,14 @@ public class RedButtonDoor : MonoBehaviour
     }
     private void OnCollisionEnter (Collision collision)
     {
-        door.SetActive(true);
+        door.SetActive(false);
     }
     private void OnCollisionStay (Collision collision)
-    {
+    { 
         door.SetActive(false);
     }
 
     private void OnCollisionExit (Collision collision){
-        door.SetActive(true);
+            door.SetActive(true);   
     }
 }

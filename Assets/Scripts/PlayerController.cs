@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Step(){
-        Debug.Log("step");
+        // Debug.Log("step");
         AudioManager.instance.Play("Walk");
     }
 }

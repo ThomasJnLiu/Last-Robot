@@ -57,11 +57,15 @@ public class LeverController : MonoBehaviour
     {
         if (use)
         {
+            AudioManager.instance.Play("PlatformSFX");
+
             button.material.SetColor("_Color", new Color(201/255, 231/255, 187/255, 255/255));
             lever_animation.status = true;
         }
         else
         {
+            AudioManager.instance.Play("PlatformSFX");
+
             button.material.SetColor("_Color", new Color(158/255, 95/255, 96/255, 255/255));
             lever_animation.status = false;
         }
