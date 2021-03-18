@@ -38,15 +38,22 @@ public abstract class Interactable : MonoBehaviour
         {
             case State.Off:
                 if (Use(actor))
+                {
                     state = State.On;
+                    GameObject.Find("ControlPanel1").GetComponent<LeverController>().useLever(true);
+                }
                 break;
             case State.On:
                 if (Reset(actor))
+                {
                     state = State.Off;
+                    GameObject.Find("ControlPanel1").GetComponent<LeverController>().useLever(false);
+                }
                 break;
         }
     }
 
+    
     public void FixUnfix(GameObject actor)
     {
         switch (state)
@@ -56,6 +63,7 @@ public abstract class Interactable : MonoBehaviour
                 {
                     state = State.Off;
                     PlayerVisualChange.currentState = PlayerVisualChange.bodyStates.oneArm;
+                    GameObject.Find("ControlPanel1").GetComponent<LeverController>().fixLever(true);
                 }
                 break;
 
@@ -64,6 +72,7 @@ public abstract class Interactable : MonoBehaviour
                 {
                     state = State.Broken;
                     PlayerVisualChange.currentState = PlayerVisualChange.bodyStates.full;
+                    GameObject.Find("ControlPanel1").GetComponent<LeverController>().fixLever(false);
                 }
                 break;
         }
