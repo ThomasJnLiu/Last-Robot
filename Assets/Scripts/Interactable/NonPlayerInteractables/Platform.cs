@@ -5,10 +5,8 @@ using UnityEngine;
 public class Platform : NonPlayerInteractable
 {
     public bool open, active;
-    private static float speed = 15;
+    private static float speed = 10;
     private GameObject platform;
-    private static float openLimit;
-    private static float closedLimit = -73;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +14,6 @@ public class Platform : NonPlayerInteractable
         open = true;
         active = false;
         platform = GameObject.Find("RetractableBridge");
-        openLimit = platform.transform.position.z;
     }
 
     // Update is called once per frame
@@ -30,6 +27,7 @@ public class Platform : NonPlayerInteractable
             }
             else
             {
+                Debug.Log("Here2");
                 openPlatform();
             }
         }
@@ -37,9 +35,10 @@ public class Platform : NonPlayerInteractable
     
     private void closePlatform()
     {
-        if (platform.transform.position.z > closedLimit)
+        if (platform.transform.localScale.z > 0f)
         {
-            platform.transform.Translate(Vector3.forward * -1 * speed * Time.deltaTime);    
+            // platform.transform.Translate(Vector3.forward * -1 * speed * Time.deltaTime);
+            platform.transform.localScale = new Vector3(1, 1, platform.transform.localScale.z - (0.1f * speed * Time.deltaTime));
         }
         else
         {
@@ -51,9 +50,11 @@ public class Platform : NonPlayerInteractable
 
     private void openPlatform()
     {
-        if (platform.transform.position.z < openLimit)
+        if (platform.transform.localScale.z < 1f)
         {
-            platform.transform.Translate(Vector3.forward * 1 * speed * Time.deltaTime);    
+            // platform.transform.Translate(Vector3.forward * 1 * speed * Time.deltaTime);  
+            Debug.Log("Hi");
+            platform.transform.localScale = new Vector3(1, 1, platform.transform.localScale.z + (0.1f * speed * Time.deltaTime));
         }
         else
         {
