@@ -25,7 +25,7 @@ public class PlayerInteractRaycast : MonoBehaviour
  
         Vector3 forward = transform.TransformDirection(Vector3.forward).normalized;
 
-        if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y - 3, transform.position.z), 1f, forward, out hit, 2f, interactableLayer))
+        if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y - 3, transform.position.z), 1f, forward, out hit, 10f, interactableLayer))
         {
             OnContextEnter(hit.transform.gameObject.GetComponent<PlayerInteractable>());
         }
