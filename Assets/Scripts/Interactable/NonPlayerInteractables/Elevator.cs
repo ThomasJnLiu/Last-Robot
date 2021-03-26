@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Elevator : NonPlayerInteractable
 {
-    private bool lifted, active;
+    public bool lifted, active;
     private static float speed = 15;
     private GameObject platform;
     private static float liftLimit = 15;
@@ -85,7 +85,7 @@ public class Elevator : NonPlayerInteractable
 
     public override bool Reset(GameObject actor)
     {
-        Use(actor, true);
+        Use(actor, false);
         return true;
     }
 }
