@@ -10,6 +10,7 @@ public class Lever : PlayerInteractable
     {
         if (actor.GetComponent<PlayerController>() != null) {
             target.Interact(gameObject);
+            GameObject.Find("ControlPanel1").GetComponent<LeverController>().useLever(true);
             return true;
         }
 
@@ -20,6 +21,7 @@ public class Lever : PlayerInteractable
     {
         if (actor.GetComponent<PlayerController>() != null) {
             target.Interact(gameObject);
+            GameObject.Find("ControlPanel1").GetComponent<LeverController>().useLever(false);
             return true;
         }
 

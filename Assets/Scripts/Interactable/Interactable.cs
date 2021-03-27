@@ -40,14 +40,12 @@ public abstract class Interactable : MonoBehaviour
                 if (Use(actor))
                 {
                     state = State.On;
-                    GameObject.Find("ControlPanel1").GetComponent<LeverController>().useLever(true);
                 }
                 break;
             case State.On:
                 if (Reset(actor))
                 {
                     state = State.Off;
-                    GameObject.Find("ControlPanel1").GetComponent<LeverController>().useLever(false);
                 }
                 break;
         }

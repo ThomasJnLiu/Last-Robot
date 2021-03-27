@@ -20,10 +20,6 @@ public class Button : NonPlayerInteractable
 
     public override bool Use(GameObject actor)
     {
-        if (actor.GetComponent<PlayerController>() != null) {
-            target.Interact(gameObject);
-        }
-
         return false;
     }
 
@@ -35,5 +31,10 @@ public class Button : NonPlayerInteractable
     private void OnCollisionEnter (Collision collision)
     {
         target.Interact(gameObject);
+        gameObject.transform.GetComponent<MeshRenderer>().material.color = new Color(0f, 1f, 0f);
+    }
+
+    private void OnCollisionExit (Collision collision) {
+        gameObject.transform.GetComponent<MeshRenderer>().material.color = new Color(1f, 0f, 0f);
     }
 }
