@@ -15,6 +15,7 @@ public class Box : PlayerInteractable
 
         if (playerInteraction.canInteract) {
             Debug.Log("Can Use");
+            PlayerVisualChange.currentState = PlayerVisualChange.bodyStates.fullHold;
             transform.SetParent(player.transform, true);
             transform.position = (player.transform.forward *5f) + player.transform.position;
             transform.localRotation = Quaternion.Euler(0,0,0);
@@ -34,7 +35,8 @@ public class Box : PlayerInteractable
         transform.SetParent(null, true);
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Collider>().isTrigger = false;
-
+        PlayerVisualChange.currentState = PlayerVisualChange.bodyStates.full;
+            
         return true;
     }
 }
