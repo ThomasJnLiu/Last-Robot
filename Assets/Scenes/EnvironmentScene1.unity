@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5535831, g: 0.61059517, b: 0.7202381, a: 1}
+  m_IndirectSpecularColor: {r: 0.5535987, g: 0.6106178, b: 0.720255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4660,7 +4660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3209351580042399211, guid: 20eed34f94f9c5b419cb9423c43caf67, type: 3}
       propertyPath: sounds.Array.data[1].volume
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3209351580042399211, guid: 20eed34f94f9c5b419cb9423c43caf67, type: 3}
       propertyPath: sounds.Array.data[2].volume
@@ -10847,8 +10847,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673531122}
-  m_LocalRotation: {x: 0.04151204, y: -0.0000000343831, z: 0.000000001428544, w: 0.99913806}
-  m_LocalPosition: {x: 0.5, y: 10.34, z: -78.5}
+  m_LocalRotation: {x: 0.24047285, y: 0.3854992, z: -0.10479114, w: 0.88463664}
+  m_LocalPosition: {x: -61.1, y: 43, z: -58.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -22215,7 +22215,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178728263}
-  m_LocalRotation: {x: 0.041512035, y: -0.000000017191548, z: 7.142718e-10, w: 0.99913806}
+  m_LocalRotation: {x: 0.21670684, y: 0.5437382, z: -0.14780559, w: 0.79720795}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -26781,8 +26781,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514674441}
-  m_LocalRotation: {x: 0.05967898, y: -1e-45, z: -0, w: 0.99821764}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.2311718, y: 0.5409597, z: -0.15767148, w: 0.7931343}
+  m_LocalPosition: {x: 0, y: 0.0000019073486, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 405151809}
@@ -29358,8 +29358,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690705228}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 10.34, z: -78.5}
+  m_LocalRotation: {x: -0, y: -0.18652198, z: -0, w: 0.9824508}
+  m_LocalPosition: {x: -61.1, y: 43, z: -58.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 637388375}
@@ -29368,7 +29368,7 @@ Transform:
   - {fileID: 1929326513}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -21.5, z: 0}
 --- !u!114 &1690705230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29417,8 +29417,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 14842189}
-  m_Follow: {fileID: 14842189}
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 40
@@ -29440,7 +29440,7 @@ MonoBehaviour:
     m_MaxSpeed: 2
     m_AccelTime: 0.2
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse Y
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: 0
@@ -29464,7 +29464,7 @@ MonoBehaviour:
     m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Mouse X
+    m_InputAxisName: 
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -180
@@ -33183,7 +33183,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929326512}
-  m_LocalRotation: {x: 0.02337939, y: 1e-45, z: -0, w: 0.9997267}
+  m_LocalRotation: {x: 0.20220868, y: 0.5463301, z: -0.13791707, w: 0.8010081}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
