@@ -19,6 +19,7 @@ public class RedButtonDoor : MonoBehaviour
     private void OnCollisionEnter (Collision collision)
     {
         door.SetActive(false);
+        gameObject.transform.GetComponent<MeshRenderer>().material.color = new Color(0f, 1f, 0f);
     }
     private void OnCollisionStay (Collision collision)
     { 
@@ -26,6 +27,7 @@ public class RedButtonDoor : MonoBehaviour
     }
 
     private void OnCollisionExit (Collision collision){
-            door.SetActive(true);   
+        door.SetActive(true);   
+        gameObject.transform.GetComponent<MeshRenderer>().material.color = new Color(1f, 0f, 0f);
     }
 }
