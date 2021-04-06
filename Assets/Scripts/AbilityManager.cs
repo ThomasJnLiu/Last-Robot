@@ -6,18 +6,12 @@ using System;
 
 public class AbilityManager : MonoBehaviour
 {
-    private bool isArmDisabled;
-    private bool isDisabledArmUsed;
-
     private PlayerController player;
     private PlayerInteraction playerInteraction;
 
     // Start is called before the first frame update
     void Start()
     {
-        isArmDisabled = false;
-        isDisabledArmUsed = false;
-
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<PlayerController>();
         playerInteraction = playerObject.GetComponent<PlayerInteraction>();
