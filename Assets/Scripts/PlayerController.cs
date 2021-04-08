@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool grabbingItem = false;
     public bool groundedPlayer;
     public bool canTurn;
-    public float playerSpeed;
+    public float playerSpeed = 15;
     public float jumpSpeed = 10.0f;
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
