@@ -224,8 +224,8 @@ Camera:
   m_GameObject: {fileID: 1063241815}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -372,6 +372,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5047051404724763952, guid: fee2c6661eb0fdc4ea0c505241632982, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047051404926819276, guid: fee2c6661eb0fdc4ea0c505241632982, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5047051405752952827, guid: fee2c6661eb0fdc4ea0c505241632982, type: 3}
       propertyPath: m_Name
       value: Canvas
